@@ -36,7 +36,7 @@ Framework para gerar a estrutura completa e configurada do projeto
     para  implementation 'org.postgresql:postgresql'    
 
 
-### Mapeamento Json (tipo de dado tabela DDD) pelo Hibernate:
+### Mapeamento Json (tipo de dado DDD) pelo Hibernate:
 
     Dependência build.gradle: implementation 'com.vladmihalcea:hibernate-types-52:2.9.8'
 ### Docker:
@@ -44,7 +44,7 @@ Programa que gera um container para a aplicação desenvolvida usando a imagem d
 * #### Configuração do Spring para o Docker no IntelliJ 
 Conectar com o DB local criado no container Docker:
 #### link: https://github.com/bert1307/API_CITIES/blob/master/src/main/resources/application.properties
-    Procfile: arquivo default para configuração para o Heroku
+   
 * #### PowerShell comandos:
 Criar um container:
 
@@ -58,6 +58,7 @@ Rodar arquivos e DB do docker da app do Heroku :
     
     DB:
     psql -h localhost -U user_api cities-api 
+    
     Arquivos:
     psql -h localhost -U user_api cities-api -f /tmp/pais.sql
     psql -h localhost -U user_api cities-api -f /tmp/estado.sql
@@ -71,10 +72,10 @@ Extensões implementadas no Postgres que habilitam o cálculo da distância usan
     CREATE EXTENSION earthdistance;
 Query Earth Distance:
     
-    Point: devolve a distância em milhas
+    Point: retorna a distância em milhas
     select ((select lat_lon from cidade where id = 4929) <@> (select lat_lon from cidade where id=5254)) as distance;
     
-    Cube: devolve a distância em metros
+    Cube: retorna a distância em metros
     select earth_distance(ll_to_earth(-21.95840072631836,-47.98820114135742),ll_to_earth(-22.01740074157715,-47.88600158691406)) as distance;
     
 ![](https://github.com/bert1307/API_CITIES/blob/master/img/DOCKER.gif)
@@ -110,6 +111,7 @@ Rodar arquivos e DB na app no Heroku:
 
     DB:
     psql -h ec2-34-234-12-149.compute-1.amazonaws.com -U noyobvttgsduzj dek7ks1urgnd
+    
     Arquivos:
     psql -h ec2-34-234-12-149.compute-1.amazonaws.com -U noyobvttgsduzj dek7ks1urgnd -f /tmp/pais.sql
     psql -h ec2-34-234-12-149.compute-1.amazonaws.com -U noyobvttgsduzj dek7ks1urgnd -f /tmp/estado.sql
