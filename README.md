@@ -52,11 +52,11 @@ Criar outro container, mapeando os arquivos do diretório /Postgres/
 
     docker run -it --rm --net=host -v ${PWD}:/tmp postgres /bin/bash
 
-Rodar arquivos e DB no container:
+Rodar arquivos e DB do docker da app do Heroku :
     
-    //DB
+    DB:
     psql -h localhost -U user_api cities-api 
-    //Arquiselect earth_distance(ll_to_earth(-21.95840072631836,-47.98820114135742),ll_to_earth(-22.01740074157715,-47.88600158691406)) as distance;vos
+    Arquivos:
     psql -h localhost -U user_api cities-api -f /tmp/pais.sql
     psql -h localhost -U user_api cities-api -f /tmp/estado.sql
     psql -h localhost -U user_api cities-api -f /tmp/cidade.sql
@@ -80,7 +80,7 @@ Plataforma em nuvem como serviço que irá dar suporte para colocar a API em pro
 * ####Configuração do Spring para o Heroku no IntelliJ
 Conectar com o DB criado na app no Heroku:
 ####link:
-    ProcFile: Arquivo default de configuração para rodar a app no Heroku
+    Procfile: Arquivo default de configuração para rodar a app no Heroku
     web: java -jar -Dspring.profiles.active=heroku build/libs/cities-api-0.0.1-SNAPSHOT.jar
 * ####PowerShell comandos:
 Dentro do diretório do projeto, enviar projeto para um repositório existente no github
@@ -99,6 +99,18 @@ Criar uma app no Heroku:
 Criar o DB (Postgres) na app (Heroku):
 
         heroku addons:create heroku-postgresql
+Rodar arquivos e DB na app no Heroku:
+
+    No diretótio /Postgres/
+    docker run -it --rm --net=host -v ${PWD}:/tmp postgres /bin/bash
+
+    DB:
+    psql -h ec2-34-234-12-149.compute-1.amazonaws.com -U noyobvttgsduzj dek7ks1urgnd
+    Arquivos:
+    psql -h ec2-34-234-12-149.compute-1.amazonaws.com -U noyobvttgsduzj dek7ks1urgnd -f /tmp/pais.sql
+    psql -h ec2-34-234-12-149.compute-1.amazonaws.com -U noyobvttgsduzj dek7ks1urgnd -f /tmp/estado.sql
+    psql -h ec2-34-234-12-149.compute-1.amazonaws.com -U noyobvttgsduzj dek7ks1urgnd -f /tmp/cidade.sql
+
 ###Postman
 Programa API client que possui uma interface que permite realizar requisições de diferentes métodos HTTTP
 
@@ -111,7 +123,16 @@ Programa API client que possui uma interface que permite realizar requisições 
     http://localhost:8080/distances/by-points?from=4929&to=5254 
     * metros
     http://localhost:8080/distances/by-cube?from=4929&to=5254 
-####Heroku        
+####Heroku  
+    https://agile-beyond-95122.herokuapp.com/countries
+    https://agile-beyond-95122.herokuapp.com/state
+    https://agile-beyond-95122.herokuapp.com/cities
+    * milhas
+    https://agile-beyond-95122.herokuapp.com/distances/by-points?from=4929&to=5254
+    * metros
+    https://agile-beyond-95122.herokuapp.com/distances/by-cube?from=4929&to=5254 
+
+    
 
 
 
