@@ -1,4 +1,4 @@
-# Everis Bootcamp: Quality Assurance Beginner #2 - DIO
+# everis Bootcamp: Quality Assurance Beginner #2 - DIO
 ## Cities API Rest
 ### Projeto Final: "Construindo uma API Rest de consulta de cidades do Brasil do zero até a produção"
 ### Descrição: 
@@ -54,7 +54,7 @@ Criar outro container, mapeando os arquivos do diretório /Postgres/
 
     docker run -it --rm --net=host -v ${PWD}:/tmp postgres /bin/bash
 
-Rodar arquivos e DB do docker da app do Heroku :
+Rodar arquivos e DB no Docker:
     
     DB:
     psql -h localhost -U user_api cities-api 
@@ -86,6 +86,7 @@ Plataforma em nuvem como serviço que irá dar suporte para colocar a API em pro
 Conectar com o DB criado na app no Heroku:
 #### link: https://github.com/bert1307/API_CITIES/blob/master/src/main/resources/application-heroku.properties
     Procfile: Arquivo default de configuração para rodar a app no Heroku
+    
     web: java -jar -Dspring.profiles.active=heroku build/libs/cities-api-0.0.1-SNAPSHOT.jar
 * #### PowerShell comandos:
 Dentro do diretório do projeto, enviar projeto para um repositório existente no github
